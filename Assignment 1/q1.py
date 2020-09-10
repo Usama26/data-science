@@ -22,6 +22,7 @@ data = [
 
 studentName = "Usama"
 studentInterest = "I love python engineering"
+ziped_data = zip((studentName,studentInterest),data[1])
 
 
 from nltk.tokenize import word_tokenize
@@ -53,8 +54,9 @@ query_corpus = dictionary.doc2bow(query_doc)
 
 query_doc_tf_idf = tf_idf[query_corpus]
 sims[query_doc_tf_idf]
+
 print('Comparing Resutls: ',sims[query_doc_tf_idf])
+match_index = np.argmax(sims[query_doc_tf_idf])
 
 
-
-
+print("Student "+studentName+" will be supervised by "+data[match_index][1]+" having interests "+data[match_index][2])
