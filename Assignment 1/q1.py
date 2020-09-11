@@ -16,12 +16,12 @@ data = [
 
 
 
-# studentName = input("Enter Student Name : ")
-# studentInterest = input("Enter Student Interest : ")
+studentName = input("Enter Student Name : ")
+studentInterest = input("Enter Student Interest : ")
 
 
-studentName = "Usama"
-studentInterest = "I love python engineering"
+# studentName = "Usama"
+# studentInterest = "I love python engineering"
 ziped_data = zip((studentName,studentInterest),data[1])
 
 
@@ -57,6 +57,7 @@ sims[query_doc_tf_idf]
 
 print('Comparing Resutls: ',sims[query_doc_tf_idf])
 match_index = np.argmax(sims[query_doc_tf_idf])
-
-
-print("Student "+studentName+" will be supervised by "+data[match_index][1]+" having interests "+data[match_index][2])
+if sims[query_doc_tf_idf][match_index] != 0:
+    print("Student "+studentName+" will be supervised by "+data[match_index][1]+" having interests "+studentInterest)
+else:
+    print("No Supervisor Found For Student "+studentName+" Having Interest"+studentInterest)
