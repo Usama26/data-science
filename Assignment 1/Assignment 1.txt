@@ -1,0 +1,23 @@
+Question 1: Supervisor Selection
+
+Read a list of tuples having your (linkedin id, Name ,linkedin headline, company name) , and input a tuple with details like 
+(Student name, interests/roles (I am software engineer, php is my passion etc)) and traverse the dataset
+which you made earlier to find if input interests/roles matches with dataset linkedin headline, if match occurs, we will be
+fixing a supervisor for that student, output for this whole scenario will be
+"Student XYZ will be supervised by ABC Person" and a zip having format (Student, Supervisor Name, Matched Interests) 
+Also use Exception Handling.
+
+Question 2: 
+Try to make a list of almost 10 to 12 elements, and use list slicing to take the last 8 elements, and then take first 4 elements
+from the updated list, reverse it, sort them and finally by using list comprehension give an expression that if a value is > 5,
+then it will be appending those elements in a new list.
+
+Question 3:
+Text = "We are having a 'datascience' class, come join with us! ;), InshaAllah we are moving to 'Germany'....!!<3 <3 :D"
+With the above text, task is to extract these emojis (' ;) ', ' :D ', ' <3 ') & strings in inverted commas. 
+Once we have these, the next task is to replace these EMOJIs only to space characters and finally trim the whole sentence
+to avoid extra spaces. Hint: We've built-in functions in python from trimming!
+
+Question 4:
+Consider any example of your own where you will be applying map, filter functions in a dataframe for any small task to
+have a good grasp over these concepts
