@@ -46,3 +46,7 @@ data.drop('Age',axis=1,inplace=True)
 
 np.floor(temp)
 list(temp.columns.values)
+
+# 829 , 61
+
+list(data['Embarked'].values).index(np.nan,62)
