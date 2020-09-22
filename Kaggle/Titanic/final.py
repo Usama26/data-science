@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Tue Sep 22 18:56:52 2020
+
+@author: Usama
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Tue Sep 22 13:44:27 2020
 
 @author: Usama
@@ -43,39 +50,38 @@ imp = SimpleImputer(missing_values=np.nan , strategy="mean")
 
 temp = imp.fit_transform(pd.DataFrame(data['Age']))
 
-data['NewAge'] = temp.apply(np.ceil)
+temp = pd.DataFrame(temp)
 
 
-data.insert(loc=4,column='RoundedAge',value=data['NewAge'])
+# data['NewAge'] = pd.DataFrame(temp.apply(np.ceil))
 
-data.drop('NewAge',axis=1,inplace=True)
+
+data.insert(loc=4,column='RoundedAge',value=temp.apply(np.ceil))
+
+# data.drop('NewAge',axis=1,inplace=True)
 
 data.drop('Age',axis=1,inplace=True)
+data.drop('Cabin',axis=1,inplace=True)
 
-
-np.floor(temp)
-list(temp.columns.values)
-
-# 829 , 61
-# list(data['Embarked'].values).index(np.nan,62)
-
-data.drop([61,829],inplace=True)
+data.dropna(subset=['Embarked'],inplace=True)
 
 
 
-f,ax = plt.subplots(figsize=(6,5))
 
-sns.set_color_codes("pastel")
+# f,ax = plt.subplots(figsize=(6,5))
 
-sns.barplot(x="Survived",y="Sex",data=data,label="Total",color="b")
+# sns.set_color_codes("pastel")
+
+# sns.barplot(x="Survived",y="Sex",data=data,label="Total",color="b")
 
 
-SurvivedMale = len(data.query('Sex == "male" and Survived == 1'))
-SurvivedFemale = len(data.query('Sex == "female" and Survived == 1'))
-Total = len(data)
+# SurvivedMale = len(data.query('Sex == "male" and Survived == 1'))
+# SurvivedFemale = len(data.query('Sex == "female" and Survived == 1'))
+# Total = len(data)
 
-print((SurvivedMale/Total)*100)
-print((SurvivedFemale/Total)*100)
+# print((SurvivedMale/Total)*100)
+# print((SurvivedFemale/Total)*100)
+
 
 finalData = data.drop(['PassengerId','Name','Ticket','Fare'],axis=1)
 
@@ -90,9 +96,10 @@ finalData.Embarked.replace('Q',3,inplace=True)
 
 
 
-X_train,X_test,Y_train,Y_test = train_test_split(finalData[finalData.columns[:-1]] ,finalData[finalData.columns[-1]],test_size=0.3)
+# X_train,X_test,Y_train,Y_test = train_test_split(finalData[finalData.columns[:-1]] ,finalData[finalData.columns[-1]],test_size=0.3)
 
-
+X_train = finalData[finalData.columns[:-1]]
+Y_train = finalData[finalData.columns[-1]]
 sel = SelectFromModel(RandomForestClassifier(n_estimators = 100))
 sel.fit(X_train, Y_train)
 
