@@ -1,0 +1,17 @@
+Clean the dataset, there are 5 files which need to be cleaned at first, and then you need to right join that.
+	You should be checking outliers, duplicates, NaNs, question marks etc.
+
+Health_camp_id column may contain values which are ideally outliers, for example, we've 3 values 231 433422322 231, so system should check 1st and 3rd values,
+if they are equal, the 2nd value should be replaced with 1st or 3rd value. IF there's a difference of less than or equal to 2, then its upon your choice which value to
+replace either 1st or 3rd.
+
+Create a new Column in which expression will be donation * Health_score and it will in percentage format, do round off to 3 decimal places
+
+We need to check how many patients have been processed by each health_camp_id and show in a interactive barplot
+
+Sort the health_camp_id with the highest health_score
+
+Find out a patient with his details like age and followers who have visited highest # of stalls
+
+
+FILES WILL BE IN JUPYTER NOTEBOOK, you will be sharing .ipynb file or html file at email

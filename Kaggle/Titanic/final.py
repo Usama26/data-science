@@ -113,18 +113,59 @@ print(selected_feat)
 
 X_train[selected_feat]
 
+
+
+
+
+testData = pd.read_csv('test.csv')
+
+testData.isnull().sum()
+
+finalTestData = testData.drop(['PassengerId','Name','Ticket','Fare','Cabin'],axis=1)
+
+
+
+temp = imp.fit_transform(pd.DataFrame(finalTestData['Age']))
+
+temp = pd.DataFrame(temp)
+
+
+# data['NewAge'] = pd.DataFrame(temp.apply(np.ceil))
+
+
+finalTestData.insert(loc=4,column='RoundedAge',value=temp.apply(np.ceil))
+
+# data.drop('NewAge',axis=1,inplace=True)
+finalTestData.drop('Age',axis=1,inplace=True)
+
+finalTestData.isnull().sum()
+
+
+
+finalTestData.replace('male',1,inplace=True)
+finalTestData.replace('female',2,inplace=True)
+
+
+finalTestData.Embarked.unique()
+finalTestData.Embarked.replace('S',1,inplace=True)
+finalTestData.Embarked.replace('C',2,inplace=True)
+finalTestData.Embarked.replace('Q',3,inplace=True)
+
+
+
+
 from sklearn.svm import SVC
 svm = SVC(kernel="linear",C=0.025,random_state=101)
 svm.fit(X_train[selected_feat],Y_train)
-Y_pred = svm.predict(X_test[selected_feat])
+Y_pred = svm.predict(finalTestData[selected_feat])
 
 
 res = dict()
-res['PassengerId'] = X_test.index.values
+res['PassengerId'] = list(testData['PassengerId'])
 res['Survived'] = Y_pred
 
 res = pd.DataFrame(res)
-
+res.to_csv('result.csv',index=False)
 
 
 print(res.to_string(index=False))
