@@ -12,9 +12,17 @@ second_health_att = pd.read_csv('./Data/Second_Health_Camp_Attended.csv');
 third_health_att = pd.read_csv('./Data/Third_Health_Camp_Attended.csv');
 
 
-
+#Deletign Nan Values As they were < 20% of the data
 first_health_att.isnull().sum()
-first_health_att.dropna("Health_Score",axis=1)
+first_health_att.dropna(inplace=True)
+
+#checking For Duplicates
+check = first_health_att[first_health_att.duplicated(subset=None, keep='first')]
+if len(check) == 0:
+    print("No Duplicates")
+else:
+    first_health_att.duplicated(subset=None, keep='first',inplace=True)
+
 
 second_health_att['Health_Camp_ID'].describe()
 quartiles = list(second_health_att['Health_Camp_ID'].quantile([0.25,0.5,0.75]))
