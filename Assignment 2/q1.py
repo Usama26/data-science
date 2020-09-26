@@ -31,11 +31,11 @@ quartiles = list(second_health_att['Health_Camp_ID'].quantile([0.25,0.5,0.75]))
 
 
 
-len(second_health_att['Health_Camp_ID'])/2
+# len(second_health_att['Health_Camp_ID'])/2
 
-print(3910/2)
-second_health_att['Health_Camp_ID'][1955]
-second_health_att['Health_Camp_ID'][1954]
+# print(3910/2)
+# second_health_att['Health_Camp_ID'][1955]
+# second_health_att['Health_Camp_ID'][1954]
 
 
 
