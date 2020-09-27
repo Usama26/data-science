@@ -1,0 +1,23 @@
+Statistics for Data Science:
+
+Probability:
+
+Discrete probability
+Conditional Probability
+Basiyan Statistics
+
+Inferential Statistics:
+Topic: Law of large numbers
+1)Central Limit Theorm
+2)Confidence Interval
+3)P- Values
+4)Hypothesis Testing { Chi-Square , ANOVA, t-test }
+5)Linear Regression
+
+
+Sources:
+Coursera: Inferential statistics (Duke Univeristy) 
+Book:Openitnrostatistics
+Statistics For dummies with R
+
+
